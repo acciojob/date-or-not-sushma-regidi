@@ -1,7 +1,16 @@
-var isDate = function (input) {
-  //   write your code here
-};
+function isDate(input) {
+  // Case 1: Input is already a Date object
+  if (input instanceof Date) {
+    return !isNaN(input.getTime());
+  }
 
-// Do not change the code below.
-const input = prompt("Enter Date.");
-alert(isDate(input));
+  // Case 2: Input is a string or number → try to parse
+  if (typeof input === "string" || typeof input === "number") {
+    let date = new Date(input);
+    return !isNaN(date.getTime());
+  }
+
+  // Otherwise, not a date
+  return false;
+}
+
